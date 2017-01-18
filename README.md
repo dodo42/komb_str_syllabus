@@ -1,2 +1,2 @@
-# komb_str_syllabus
+# Kombinatoricke struktury :: sylabus
 Rozsireny sylabus predmetu Kombinatoricke struktury
