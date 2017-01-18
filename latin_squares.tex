@@ -1,0 +1,186 @@
+\chapter{Latinské štvorce}
+
+\section{Definícia, základné vlastnosti}
+
+\begin{definition}
+Tabuľka rozmerov $n\times n$ s prvkami z $\set{1, \ldots, n}$ je latinský~štvorec rádu $n$, ak platí:
+\begin{enumerate}
+    \item v každom riadku sa výskytuje všetkých $n$ rôznych symbolov
+    \item v každom stlpci sa výskytuje všetkých $n$ rôznych symbolov
+\end{enumerate}
+\end{definition}
+
+Symbolom $S_n$ značíme grupu permutácií veľkosti $n$.
+
+\begin{definition}
+Nech $\phi, \psi \in S_n$ sú permutácie veľkosti $n$. Potom vzdialenosť $dist(\phi, \psi)$ dvoch permutácií definujeme ako počet
+prvkov, ktoré dané permutácie zobrazia rôzne. Formálne, $$dist(\phi, \psi) := \left| \set{x ~|~ x \in \set{1, \ldots, n} \wedge \phi(x) \neq \psi(x) } \right| $$
+\end{definition}
+
+\begin{definition}
+Nech $\phi \in S_n$ je permutácia veľkosti $n$. Potom $Fix(\phi)$ je množina všetkých pevných bodov permutácie $\phi$. Formálne,
+$$Fix(\phi) := \set{x ~|~ x \in \set{1, \ldots, n} \wedge \phi(x) = x}$$ 
+\end{definition}
+
+\begin{theorem}
+
+Nech $\phi, \psi \in S_n$ sú permutácie veľkosti $n$. Potom platí:
+
+\begin{enumerate}
+    \item $\forall \lambda \in S_n: dist(\lambda \phi, \lambda \psi) = dist(\phi, \psi)$ 
+    \item $dist(\phi, \psi) = dist(1, \phi^{-1} \psi) = n - |Fix(\phi^{-1} \psi)|$
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Funkcia $dist(\phi, \psi)$ je metrikou priestoru $S_n$, t.j. ona spĺňa nasledujúce podmienky:
+    \begin{enumerate}
+        \item $dist(\phi, \psi) = 0 \Leftrightarrow \phi = \psi$
+        \item $dist(\phi, \psi) = dist(\psi, \phi)$ (symetria)
+        \item $dist(\phi, \psi) + dist(\psi, \lambda) \geq dist(\phi, \lambda)$ (trojuholníková nerovnosť)  
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+Latinský obdĺžník rozmerov $k \times n$ je postupnosť $L = [\phi_1, \phi_2, \ldots, \phi_k]$ permutácií z $S_n$ takých,
+že všetky sú vo vzdialenosti $n$. Formálne, 
+$$\forall i, j \in \set{1, \ldots, n}: i \neq j \Rightarrow dist(\phi_i, \phi_j) = n$$
+\end{definition}
+
+\begin{definition}{(Iná definícia latinských štvorcov)}
+Latinský štvorec rádu $n$ je latinský obdĺžnik typu $k \times n$ s maximálnou dĺžkou postupnosti. Inak povedané,
+latinský štvorec rádu $n$ je postupnosť $n$ permutácií z $S_n$, ktoré sú od seba vzdialené $n$.
+\end{definition}
+
+\begin{theorem}
+    Každý latinský obdĺžnik sa dá doplniť na latinský štvorec.
+\end{theorem}
+
+\section{Ortogonálne latinské štvorce}
+
+\begin{definition}
+Nech $l = [\phi_1, \ldots, \phi_n]$ a $l' = [\psi_1, \ldots, \psi_n]$ sú latinské štvorce rádu $n$. Hovoríme, že
+$l$ a $l'$ sú ortogonálne (znáčime ako $l \perp l'$), ak platí: 
+$$\forall i,j,k,l \in \set{1, \ldots, n}: (i, j) \neq (k, l) \Longrightarrow (\phi_i(j), \psi_i(j)) \neq  (\phi_k(l), \psi_k(l))$$
+
+\end{definition}
+
+
+\begin{theorem}
+Nech $l = [\phi_1, \ldots, \phi_n]$ a $l' = [\psi_1, \ldots, \psi_n]$ sú latinské štvorce rádu $n$.
+Zavedieme nasledovné značenia:
+\begin{itemize}
+    \item Nech $\lambda \in S_n$, potom $\lambda l := [\lambda \phi_1, \ldots, \lambda \phi_n]$ ($\lambda l$ je tiež latinský štvorec). 
+    \item Nech kompozícia $l$ a $l'$ je definovaná ako $l \circ l' := [\phi_1 \psi_1, \ldots, \phi_n \psi_n]$.
+\end{itemize}
+
+Potom platí:
+
+\begin{enumerate}
+    \item $l \perp l' \Leftrightarrow [\psi_1 \phi_1^{-1}, \ldots, \psi_n \phi_n^{-1}]$ je latinský štvorec
+    \item Ak $\lambda, \rho \in S_n$ a $l \perp l'$,  tak aj $\lambda l \perp \rho l'$
+    \item $l \perp l' \Leftrightarrow$ existuje latinský štvorec $l''$ taký, že $l' = l'' \circ l$ 
+\end{enumerate}
+    
+\end{theorem}
+
+\begin{definition}
+Množina latinských štvorcov rádu $n$ $\set{l_1, \ldots, l_r}$ je maximálna, ak $\forall i \neq j: l_i \perp l_j$ a 
+nedá sa doplniť ďalším latinským štvorcom bez porušenia prvej podmienky. 
+\end{definition}
+
+\begin{theorem}
+Maximálna množina latinských štvorcov rádu $n$ má najviac $n-1$ prvkov.
+\end{theorem}
+
+\begin{definition}
+Latinský štvorec je v normánom tvare, ak prvý riadok tabuľky je rovný $(1, \ldots, n)$ a prvý stlpec je rovný $(1, \ldots, n)^T$.
+\end{definition}
+
+\begin{definition}
+Latinské štvorce $l$ a $l'$ sú izotopické, ak sa dajú permutáciou riadkov a stlpcov previesť na rovnaký latinský štvorec v normálnom tvare.
+\end{definition}
+
+\begin{remark}
+Latinský štvorec v normálnom tvare zodpovedá tabuľke binárnej operácie kvazigrupy 
+(kvazigrupa je množina s invertovateľnou binárnou operáciou a neutrálnym prvkom\footnote{dá sa to neformálne predstaviť ako grupu bez zaručenej asociativity}).
+
+Platí, že 2 kvazigrupy sú izomorfné práve vtedy, keď príslušné latinské štvorce sú izotopické.
+\end{remark}
+
+\begin{definition}
+Latinský štvorec si vieme predstaviť ako množinu $A$ trojíc $(r,c,s) \in \set{1, \ldots, n}^3$, 
+kde $r$ zodpovedá číslu riadku, $c$ zodpovedá číslu stlpca a $s$ zodpovedá hodnote v políčku $(i, j)$, 
+takú, že platí:
+\begin{itemize}
+    \item všetky dvojice $(r, c)$ sú rôzne (''máme $n^2$ políčok'')
+    \item všetky dvojice $(r, s)$ sú rôzne (''v každom riadku sa vyskytnú všetky hodnoty od $1$ po $n$'')
+    \item všetky dvojice $(c, s)$ sú rôzne (''v každom stlpci sa vyskytnú všetky hodnoty od $1$ po $n$'')
+\end{itemize}  
+
+Konjugáciou latinského štvorca voláme množinu trojíc $A'$, ktorá vznikne z $A$ permutáciou trojíc. Formálne,
+nech $\lambda \in S_3$ je permutácia veľkosti $3$, potom $A' = \set{ (a_{\lambda(1)}, a_{\lambda(2)}, a_{\lambda(3)} ) ~|~ (a_1, a_2, a_3) \in A}$.
+
+Latinské štvorce, ktoré sa dajú jeden z druhého dostať pomocou konjugácie, voláme konjugované.
+
+Latinské štvorce, ktoré sa dajú jeden z druhého dostať pomocou konjugácie a izotopie, voláme paratopické.
+
+\end{definition}
+
+
+\begin{theorem}{(Stevens, 1935)}
+Ak $n = p^\alpha$, kde $p$ je prvočíslo, tak maximálna množina latinských štvorcov má $n-1$ prvkov.
+\end{theorem}
+
+\begin{construction}
+Číslo $n$ je mocninou prvočísla, preto existuje konečné pole $F := GF(n)$ príslušnej veľkosti. 
+Očíslujeme prvky poľa $F$ v ľubovoľnom poradí, ale nech $a_0 = 0$.
+
+$k$-tý latinský štvorec si označme ako $l_k = \left(a_{ij}^{(k)}\right)$.
+
+$a_{ij}^{(k)} := a_i a_k + a_j$
+
+\end{construction}
+
+\begin{definition}
+$MOLS(n)$ je mohutnosť maximálnej množiny latinských štvorcov rádu $n$.
+\end{definition}
+
+\begin{remark}
+$MOLS(6) = 1$
+\end{remark}
+
+\begin{theorem_hard}{(Bose, Parker, Schrickhande, 1960)}
+
+$\forall n \geq 3 \wedge n \neq 6: MOLS(n) \geq 2$
+
+\end{theorem_hard}
+
+\begin{theorem}
+$MOLS(n_1) \geq m \wedge MOLS(n_2) \geq m \Rightarrow MOLS(n_1 n_2) \geq m$
+\end{theorem}
+
+\begin{construction}
+$k$-tý latinský štvorec rádu $n_1 n_2$ sa dá získať pomocou Kroneckerovho súčinu $k$-tých príslušných latinských štvorcov rádu $n_1$ a $n_2$.
+
+Formálne, nech $l_1, \ldots, l_m$ sú ortogonálne latinské štvorce rádu $n_1$ a $l'_1, \ldots, l'_m$ sú ortogonálne latinské štvorce rádu $n_2$.
+Potom množina matíc $\set{l_k \otimes l'_k ~|~ k \leq m}$, kde $\otimes$ je Kroneckerov súčin matíc, je množina ortogonálnych latinských štvorcov rádu $n_1 n_2$.
+\end{construction}
+
+\begin{corollary}
+$$n = p_1^{\alpha_1} p_2^{\alpha_2} \ldots p_r^{\alpha_r} \Rightarrow MOLS(n) \geq \min_{i \leq r} (p_i^{\alpha_i} - 1)$$
+\end{corollary}
+
+\begin{theorem}
+$$n = 2m - 1 \Rightarrow MOLS(n) \geq 2$$
+\end{theorem}
+
+\begin{construction}
+
+Pohubujeme sa v cyklickej grupe $(\mathbb{Z}_n, +) = \set{0, \ldots, n-1}$.
+
+\begin{align*}
+A := (a_{ij}),~& a_{ij} := m (i+j)~(mod~n) \\
+B := (b_{ij}),~& b_{ij} := (i-j)  ~(mod~n)    
+\end{align*}
+\end{construction}

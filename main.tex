@@ -1,0 +1,50 @@
+\documentclass[a4paper, 11pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+\usepackage[slovak]{babel}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{tocloft}
+\usepackage{comment}
+\usepackage{moreverb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Kombinatorické štruktúry :: sylabus}
+\author{Askar Gafurov}
+
+% znacenia viet, definicii atd
+\newtheorem{theorem}{Veta}[section]
+\newtheorem{theorem_hard}[theorem]{Veta*}
+\newtheorem{corollary}{Dôsledok}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{hypothesis}{Hypotéza}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Poznámka}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definícia}[section]
+\newtheorem*{construction}{Konštrukcia}
+
+% moje makra
+\def\TODO{\textbf{\textcolor{red}{TODO }}}
+\def\set#1{\left\{#1\right\}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\input introduction.tex
+
+\input latin_squares.tex
+
+\input block_designs.tex
+
+\input matroids.tex
+
+\end{document}
