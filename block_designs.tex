@@ -1,7 +1,66 @@
 \chapter{Blokové plány}
 
 \section{Definícia, základné vlastnosti}
-\section{Vyvážené blokové plány}
+
+\begin{definition}
+
+Vyvážený nekompletný blokový plán (angl. \emph{balanced incomplete block design}) $BIBD(v, b, r, k, \lambda)$ 
+je usporiadaná dvojica $(X, \mathcal{B})$, kde $X$ je množina objektov a $\mathcal{B} \subset \powerset(X)$ je 
+množina podmnožín objektov (tieto podmnožiny voláme \emph{bloky}), pričom sú splnené nasledujúce podmienky:
+
+\begin{enumerate}
+    \item $v = |X|$ je mohutnosť množiny objektov.
+    \item $b = |\mathcal{B}|$ je mohutnosť množiny blokov.
+    \item každý blok má mohutnosť $k$.
+    \item každý bod je obsiahnutý v práve $r$ blokoch.
+    \item každá dvojica bodov sa vyskytuje v práve $\lambda$ blokoch. 
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+$\exists BIBD(v, b, r, k, \lambda) \Longleftrightarrow $ $\lambda$-násobný kompletný multigraf rádu~$v$ $\lambda K_v$
+sa dá rozložiť na $b$ hranovo disjunktných klík rádu~$k$ ($K_k$).
+\end{theorem}
+
+\begin{theorem}
+
+Nech existuje $BIBD(v, b, r, k, \lambda)$. Potom:
+\begin{enumerate}
+    \item $vr = bk$
+    \item $\lambda (v-1) = r (k-1)$
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+Preto namiesto značenia $BIBD(v, b, r, k, \lambda)$ budeme použivať značenie $BIBD(v, k, \lambda)$ (zvyšné parametre vieme dorátať).
+\end{corollary}
+
+\begin{theorem}
+
+Nech existuje $BIBD(v, b,r, k, \lambda)$, kde $X = \set{x_1, x_2, \ldots, x_v}$ a $\mathcal{B} = \set{B_1, \ldots, B_b}$. 
+Nech matica incidencie $A \in \set{0, 1}^{v \times b}$ je matica typu $v\times b$, kde $A_{ij} = 1$ práve vtedy, keď $x_i \in B_j$.
+Potom $A A^T = (r-\lambda) I_v + \lambda J_{v}$, 
+kde $I_v$ je matica identity rádu $v$ a 
+$J_v$ je matica jednotiek typu $v \times v$.
+\end{theorem}
+
+\begin{lemma}
+Nech $A$ je matica incidencie blokového plánu $BIBD(v, b,r, k, \lambda)$. Potom $det(AA^T) = (r-\lambda)^{v-1} (v\lambda - \lambda + r)$.
+\end{lemma}
+
+\begin{corollary}
+Ak $BIBD(v, b,r, k, \lambda)$ je blokový plán a $b=v$, tak matica incidencie $A$ je regulárna a matici $A^T$ tiež zodpovedá nejaký blokový plán.
+\end{corollary}
+
+\begin{remark}
+Blokové plány také, že $b = v$, voláme symetrické.
+\end{remark}
+
+
+\begin{theorem}{(Fisherova nerovnosť)}
+Nech existuje blokový plán $BIBD(v, b,r, k, \lambda)$. Potom $b \geq v$.
+\end{theorem}
+
 \section{Cyklické blokové plány a diferenčné množiny}
 \section{Hadamardove matice}
 \section{Konečné projektívne roviny}

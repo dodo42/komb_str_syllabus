@@ -13,6 +13,13 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 
+%powerset
+\usepackage[mathscr]{euscript}
+\let\euscr\mathscr \let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+%\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\def\powerset{\mathcal{P}}
+
 \title{Kombinatorické štruktúry :: sylabus}
 \author{Askar Gafurov}
 
@@ -33,6 +40,7 @@
 % moje makra
 \def\TODO{\textbf{\textcolor{red}{TODO }}}
 \def\set#1{\left\{#1\right\}}
+\def\ssize#1{\left|#1\right|}
 
 \begin{document}
 
