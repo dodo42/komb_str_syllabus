@@ -32,7 +32,10 @@ Nech existuje $BIBD(v, b, r, k, \lambda)$. Potom:
 \end{theorem}
 
 \begin{corollary}
-Preto namiesto značenia $BIBD(v, b, r, k, \lambda)$ budeme použivať značenie $BIBD(v, k, \lambda)$ (zvyšné parametre vieme dorátať).
+Preto namiesto značenia $BIBD(v, b, r, k, \lambda)$ budeme často
+použivať značenie $BIBD(v, k, \lambda)$, nakoľko 
+zvyšné parametre vieme dorátať: 
+$$r := \dfrac{\lambda (v-1)}{k-1},~ b := \dfrac{\lambda v (v-1)}{k (k-1)}$$
 \end{corollary}
 
 \begin{theorem}
@@ -62,6 +65,66 @@ Nech existuje blokový plán $BIBD(v, b,r, k, \lambda)$. Potom $b \geq v$.
 \end{theorem}
 
 \section{Cyklické blokové plány a diferenčné množiny}
+
+\begin{definition}
+
+Množina $D = \set{d_1, \ldots, d_k} \subset \mathbb{Z}_v$ mohutnosti $k$ sa volá $(v, k, \lambda)$-diferenčnou množinou, ak 
+pre každý nenulový prvok $a \in \mathbb{Z}_v$ existuje práve $\lambda$ usporiadaných dvojíc $(d_i, d_j) \in D^2$ takých, že
+$d_i - d_j \equiv a (mod~v)$. 
+\end{definition}
+
+\begin{remark}
+
+Množina $\set{0, 1, 3}$ je $(7, 3, 1)$-diferenčnou množinou.
+
+\end{remark}
+
+\begin{remark}
+
+Podobným spôsobom je možné definovať diferenčné množiny nad konečnými grupami rádu $v$.
+
+\end{remark}
+
+\begin{definition}
+$(v, k, \lambda)$-BIBD je cyklický, ak existuje permutácia s cyklom dlžky $v$ taká, že zachováva bloky\footnote{takéto
+zobrazenia sa všeobecne nazývajú \emph{automorfizmy}}. 
+Formálne, blokový plán je cyklický, ak 
+existuje permutácia  $\phi \in S_v$ s cyklom dlžky $v$ taká, že 
+$$\mathcal{B} = \set{\set{\phi(x_1), \ldots, \phi(x_k)} ~|~ \set{x_1, \ldots, x_k} \in \mathcal{B} }$$
+\end{definition}
+
+\begin{theorem}
+Množina $D = \set{d_1, \ldots, d_k}$ je $(v, k, \lambda)$-diferenčná množina práve vtedy, keď
+$(X, \mathcal{B})$, kde $X = \mathbb{Z}_v$ a $\mathcal{B} = \set{D + i ~|~ \forall i \in \mathbb{Z}_v}$ ($D + i := \set{d_1 + i, \ldots, d_k + i}$)
+je cyklický $(v, k, \lambda)$-BIBD. 
+\end{theorem}
+
+\begin{definition}
+Nech $F$ je konečné pole. Nech $V \cong F^{n+1}$ je vektorový priestor dimenzie $n+1$ nad poľom $F$. 
+Definujeme reláciu $\sim$ nad prvkami $V^* := V - \set{\vec{0}}$:
+
+$$\forall \vec{a},\vec{b} \in V^*: \left( \vec{a} \sim \vec{b} \overset{def}{\Longleftrightarrow} \exists k \in F: \vec{a} = k \vec{b} \right)$$
+
+Potom rozklad $V^*$ na triedy ekvivalencie $\mathbb{P}^n(V) := \faktor{V^*}{\sim}$ je $n$-rozmerná projektívna rovina nad $F$.
+
+Projektívnu rovinu dimenzie $n$ nad konečným poľom s $q = p^r$ prvkami oznáčujeme ako $PG(n, q) := \mathbb{P}^n\left( (\mathbb{Z}_p)^r \right)$
+
+\end{definition}
+
+\begin{theorem}{(Typ S dif. množín --- Singerove dif. množiny)\footnote{\TODO je to bez dokazu ci s dokazom?}}\\
+Nech množina $D$ obsahuje všetky nadroviny konečnej projektívnej roviny $PG(n, q)$ 
+(nadrovina je faktorový obraz vektorového podriestoru dimenzie $n$). 
+Potom $D$ je $(v, k, \lambda)$-diferenčná množina s parametrami:
+$$v = \dfrac{q^{n+1}-1}{q-1}, k = \dfrac{q^n - 1}{q-1}, \lambda = \dfrac{q^{n-1}-1}{q-1}$$
+\end{theorem}
+
+\begin{theorem}{(Typ Q dif. množín --- kvadratické reziduá)}
+\end{theorem}
+
+\begin{theorem}{(Typ B dif. množín --- bikvadratické reziduá)}
+\end{theorem}
+
+
 \section{Hadamardove matice}
 \section{Konečné projektívne roviny}
 \section{Steinerovské systémy trojíc, zovšeobecnenia}
