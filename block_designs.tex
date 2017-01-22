@@ -64,13 +64,17 @@ Blokové plány také, že $b = v$, voláme symetrické.
 Nech existuje blokový plán $BIBD(v, b,r, k, \lambda)$. Potom $b \geq v$.
 \end{theorem}
 
+\begin{corollary}
+Nech existuje blokový plán $BIBD(v, b,r, k, \lambda)$. Potom $r \geq k$.
+\end{corollary}
+
 \section{Cyklické blokové plány a diferenčné množiny}
 
 \begin{definition}
 
 Množina $D = \set{d_1, \ldots, d_k} \subset \mathbb{Z}_v$ mohutnosti $k$ sa volá $(v, k, \lambda)$-diferenčnou množinou, ak 
 pre každý nenulový prvok $a \in \mathbb{Z}_v$ existuje práve $\lambda$ usporiadaných dvojíc $(d_i, d_j) \in D^2$ takých, že
-$d_i - d_j \equiv a (mod~v)$. 
+$d_i - d_j \equiv a \mod v$. 
 \end{definition}
 
 \begin{remark}
@@ -86,8 +90,8 @@ Podobným spôsobom je možné definovať diferenčné množiny nad konečnými 
 \end{remark}
 
 \begin{definition}
-$(v, k, \lambda)$-BIBD je cyklický, ak existuje permutácia s cyklom dlžky $v$ taká, že zachováva bloky\footnote{takéto
-zobrazenia sa všeobecne nazývajú \emph{automorfizmy}}. 
+$(v, k, \lambda)$-BIBD je cyklický, ak existuje permutácia s cyklom dlžky $v$ taká, že zachováva bloky\footnote{
+bijektívne zobrazenia množiny na ňu samu, ktoré zachovávajú vzťahy medzi objektami, sa všeobecne nazývajú \emph{automorfizmy}}. 
 Formálne, blokový plán je cyklický, ak 
 existuje permutácia  $\phi \in S_v$ s cyklom dlžky $v$ taká, že 
 $$\mathcal{B} = \set{\set{\phi(x_1), \ldots, \phi(x_k)} ~|~ \set{x_1, \ldots, x_k} \in \mathcal{B} }$$
@@ -100,6 +104,7 @@ je cyklický $(v, k, \lambda)$-BIBD.
 \end{theorem}
 
 \begin{definition}
+\label{def:fpp1}
 Nech $F$ je konečné pole. Nech $V \cong F^{n+1}$ je vektorový priestor dimenzie $n+1$ nad poľom $F$. 
 Definujeme reláciu $\sim$ nad prvkami $V^* := V - \set{\vec{0}}$:
 
@@ -107,24 +112,198 @@ $$\forall \vec{a},\vec{b} \in V^*: \left( \vec{a} \sim \vec{b} \overset{def}{\Lo
 
 Potom rozklad $V^*$ na triedy ekvivalencie $\mathbb{P}^n(V) := \faktor{V^*}{\sim}$ je $n$-rozmerná projektívna rovina nad $F$.
 
-Projektívnu rovinu dimenzie $n$ nad konečným poľom s $q = p^r$ prvkami oznáčujeme ako $PG(n, q) := \mathbb{P}^n\left( (\mathbb{Z}_p)^r \right)$
+Projektívnu rovinu dimenzie $n$ nad konečným poľom s $q = p^r$ prvkami oznáčujeme ako $PG(n, q) := \mathbb{P}^n\left( \mathbb{Z}_p^r \right)$
 
 \end{definition}
 
-\begin{theorem}{(Typ S dif. množín --- Singerove dif. množiny)\footnote{\TODO je to bez dokazu ci s dokazom?}}\\
+\begin{theorem_hard}{(Typ S dif. množín --- Singerove dif. množiny)\footnote{\TODO je to bez dokazu ci s dokazom?}}\\
 Nech množina $D$ obsahuje všetky nadroviny konečnej projektívnej roviny $PG(n, q)$ 
 (nadrovina je faktorový obraz vektorového podriestoru dimenzie $n$). 
 Potom $D$ je $(v, k, \lambda)$-diferenčná množina s parametrami:
 $$v = \dfrac{q^{n+1}-1}{q-1}, k = \dfrac{q^n - 1}{q-1}, \lambda = \dfrac{q^{n-1}-1}{q-1}$$
-\end{theorem}
+\end{theorem_hard}
 
-\begin{theorem}{(Typ Q dif. množín --- kvadratické reziduá)}
-\end{theorem}
+\begin{theorem_hard}{(Typ Q dif. množín --- kvadratické reziduá, angl. \emph{Paley-type})}\\
+Nech $F := GF(p^l)$ je konečné pole mohutnosti $p^l$, kde $p^l \equiv 3 \mod 4$. 
+Nech $r \in F$ je generátor grupy $F^\ast := (F-\set{0}, \ast)$. 
+Potom množina kvadratických reziduí grupy $F^*$ $QR(F^*) := \set{r^a \mod p^l ~|~ a \in \set{0, \ldots, p^l-1} \wedge a~\text{je párne} }$
+je $(v, k, \lambda)$-diferenčnou množinou s parametrami:
 
-\begin{theorem}{(Typ B dif. množín --- bikvadratické reziduá)}
-\end{theorem}
+$$v = p^l = 4t-1, k = 2t - 1, \lambda = t-1$$
 
+\end{theorem_hard}
+
+\begin{remark}
+
+Existujú aj ďalšie triedy differenčných množín, napríklad bikvadratické reziduá alebo tzv. \emph{twin prime power difference set}.
+
+\end{remark}
+
+\TODO rozpísať bikvadratické rezidua, resp. twin prime power.
 
 \section{Hadamardove matice}
+
+\begin{definition}
+Matica $H \in \set{-1, +1}^{n \times n}$ je Hadamardovou maticou rádu $n$, ak $HH^T = nI_n$ (t.j. všetky riadky sú navzájom ortogonálne).
+\end{definition}
+
+\begin{theorem}
+Nech matica $H$ je Hadamardova matica rádu $n$. Potom platí:
+\begin{enumerate}
+    \item vymenou riadkov (stlpcov) matice $H$ dostaneme Hadamardovu maticu
+    \item matica $H$ je normálna, t.j. $HH^T = H^T H$
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+Hadamardova matica je v normálnom tvare, ak prvý riadok aj prvý stlpec obsahujú iba hodnoty $+1$.
+\end{definition}
+
+\begin{theorem_hard}
+
+Nech $H$ je Hadamardova matica rádu $n$. Potom $\det{H}~=~\sqrt{n^n}$.
+
+\end{theorem_hard}
+
+\begin{theorem_hard}{(Hadamardov odhad)}\\
+Nech $M \in \mathbb{C}^{n\times n}$ je komplexná matica typu $n\times n$, kde $\ssize{(M)_{ij}} \leq 1$. 
+Nech $H$ je ľubovoľná Hadamardova matica rádu $n$.
+Potom platí:
+
+$$\det{M} \leq \det{H} = \sqrt{n^n}$$
+
+\end{theorem_hard}
+
+\begin{theorem}
+Ak $H$ je Hadamardova matica rádu $n$, tak $n$ je buď $1$, $2$ alebo násobok $4$. 
+\end{theorem}
+
+\begin{hypothesis}{(Hadamard)}\\
+$\forall n \in \set{1, 2} \cup \set{4k ~|~ k \in \mathbb{N}} \Longrightarrow$~existuje Hadamardova matica rádu $n$. 
+\end{hypothesis}
+
+
+\begin{theorem}{(Hadamard, Sylvester)}\\
+Ak $H$, $H'$ su Hadamardove matice, tak aj $H \otimes H'$ je tiež Hadamardova matica ($\otimes$~je Kroneckerov súčin matíc).
+\end{theorem}
+
+\begin{theorem}
+Normalizovaná Hadamardova matica rádu $4\mu$ existuje práve vtedy, keď existuje $(4\mu-1, 2\mu-1, \mu-1)$-diferenčná množina (typ Q). 
+\end{theorem}
+
 \section{Konečné projektívne roviny}
+
+Jedna (algebraická) definícia konečnej projektívnej roviny (angl. \emph{finite projective plane}, alebo skrátene FPP) 
+už bola daná v sekcii o diferenčných množinách (definícia \ref{def:fpp1}). V tejto sekcii uvedieme iné dve definície: 
+axiomatickú a kombinatorickú.
+
+
+\begin{definition}{(Axiómy konečnej projektívnej roviny)}\\
+\label{def:fpp2}
+Pojmy bodu a priamky sú brané ako primitívne pojmy. 
+Relácie ''bod leží na priamke'' (značíme $p \in l$) a ''priamka prechádza bodom'' považujeme za primitívne relácie.
+
+Usporiadana trojiica $\pi = (X, \mathfrak{P}, \in)$, kde $X$ je konečná množina bodov, $\mathfrak{P}$ je konečná množina priamok
+a $\in$ je relácia ''patrí'' medzi bodmi a priamkami, je konečnou projektívnou rovinou, ak spĺňa nasledujúce axiómy:
+
+\begin{enumerate}
+    \item Každými dvomi rôznymi bodmi prechádza \textbf{práve 1} priamka.
+    \item Každé dve rôzne priamky majú \textbf{práve 1} spoločný bod.
+    \item existujú 4 body vo všeobecnej geometrickej polohe, t.j. žiadnou trojicou
+    z~týchto bodov nevedie žiadna priamka.
+\end{enumerate}
+\end{definition}
+
+
+\begin{theorem_hard}{(Desarguesova veta)}\\
+\TODO obrázok
+\end{theorem_hard}
+
+
+\begin{theorem}
+\label{th:fpp_ax_4}
+V konečnej projektívnej rovine (v zmysle definície \ref{def:fpp2}) existujú 4 priamky také,
+že žiadna trojica z týchto priamok nemá spoločný bod.
+\end{theorem}
+
+Čítateľ si môže všimnúť, že ak vymeníme v danom axiomatickom systéme pojmy ''priamka'' a ''bod'',
+tak dostaneme ekvivalentný systém axióm. Je ľahko nahliadnuť, 
+že ak v ľubovolnom platnom tvrdení o konečných projektívnych rovinách vymeníme tieto pojmy, tak
+znovu dostaneme platné tvrdenie. Takéto trvdenia voláme duálne (napríklad, prvá axióma je duálna ku druhej a tretia axióma
+je duálna ku vete \ref{th:fpp_ax_4}).
+
+\begin{theorem}
+Nech $\pi$ je konečná projektívna rovina 
+a nech $n$ je prirodzené 
+číslo väčšie alebo rovné 2. 
+Potom nasledujúce tvrdenia sú ekvivalentné:
+\begin{enumerate}
+    \item každá priamka obsahuje práve $n+1$ bodov
+    \item každý bod leží na práve $n+1$ priamkach (duálne ku 1.)
+    \item nejaká priamka obsahuje práve $n+1$ bodov
+    \item nejaký bod leží na práve $n+1$ priamkach (duálne ku 3.)
+    \item konečná projektívna rovina $\pi$ má práve $n^2+n+1$ priamok
+    \item konečná projektívna rovina $\pi$ má práve $n^2+n+1$ bodov (duálne ku 5.)
+\end{enumerate}
+\end{theorem}
+
+
+\begin{definition}{(Kombinatorická definícia FPP)}\\
+Konečná projektívna rovina rádu $n$ je $BIBD(v, k, \lambda)$ s parametrami:
+$$v = n^2 + n + 1, k = n + 1, \lambda = 1$$
+\end{definition}
+
+\begin{theorem}
+Kombinatorická a axiomatická definície konečnej projektívnej roviny sú ekvivalentné. 
+\end{theorem}
+
+\begin{theorem_hard}
+Ak $n$ je mocninou prvočísla, tak existuje konečná projektívna rovina rádu $n$.
+\end{theorem_hard}
+
+\begin{hypothesis}
+Ak existuje konečná projektívna rovina rádu $n$, tak $n$ je mocninou prvočísla.
+\end{hypothesis}
+
+\begin{definition}
+
+Matica $C = (c_{ij})$ typu $n \times m$, kde $n \geq 4, m \geq 4$ a $c_{ij} \in \set{1, \ldots, n}$,  
+má latinskú vlastnosť, ak lubovoľná podmatica z dvoch stlpcov matice $C$ nemá rovnaké riadky. Formálne,
+
+$$\forall (i, j) \neq (k, l): (c_{ij}, c_{il}) \neq (c_{jk}, c_{jl})$$
+
+Navyše, ak podmatica matice $C$, tvorená prvými dvomi stlpcami, obsahuje postupne všetky dvojice čísel $\set{1, \ldots, n}$
+v lexikografickom poradí, tak ju voláme matica s latinskou vlastnosťou v normálnom tvare.
+\end{definition}
+
+\begin{theorem}
+Nech $n \geq 3, t \geq 2$. Potom množina $t$ navzájom ortogonálnych latinských štvorcov rádu $n$ existuje práve vtedy,
+keď existuje matica typu $n^2 \times (t+2)$ s latinskou vlastnosťou v normálnom tvare.
+\end{theorem}
+
+\begin{theorem}
+Existencia konečnej projektívnej roviny rádu $n$ je ekvivalentná s existenciou $(n-1)$ navzájom ortogonálnych latinských štvorcov rádu $n$.
+\end{theorem}
+
+\begin{construction}
+\TODO
+\end{construction}
+
 \section{Steinerovské systémy trojíc, zovšeobecnenia}
+
+\begin{definition}
+Blokové plány typu $BIBD(v, 3, 1)$ sa volajú Steinerovské systémy trojíc (angl. \emph{Steiner triplet system}, skrátene STS).
+\end{definition}
+
+\begin{remark}
+Existencia STS je ekvivalentná s existenciou rozkladu kompletného grafu $K_v$ na trojuholníky.
+\end{remark}
+
+\begin{theorem}
+\label{th:sts_nec}
+Ak $v$ je počet objektov STS, tak $v \equiv 1 \mod 6$ alebo $v \equiv 3 \mod 6$.
+\end{theorem}
+
+\begin{theorem_hard}{(Kirkman)}\\
+Ak $v$ spĺňa podmienky z vety \ref{th:sts_nec}, tak existuje STS s práve $v$ objektmi.
+\end{theorem_hard}
