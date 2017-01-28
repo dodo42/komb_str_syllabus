@@ -1,5 +1,79 @@
 \chapter{Matroidy}
 
 \section{Definícia, základné pojmy}
+
+\begin{definition}
+
+Dvojica $(X, \mathcal{N})$, kde $\mathcal{N} \in \powerset(X)$ a $\mathcal{N}$ je konečná, je matroid, ak sú splnené nasledujúce podmienky:
+\begin{enumerate}
+    \item $\varnothing \in \mathcal{N}$
+    \item $N \in \mathcal{N} \wedge N' \subseteq N \Longrightarrow N' \in \mathcal{N}$
+    \item $N, N' \in \mathcal{N} \wedge \ssize{N} < \ssize{N'} \Longrightarrow \exists x \in N' - N: N \cup \set{x} \in \mathcal{N}$
+\end{enumerate}
+
+Množiny z $\mathcal{N}$ voláme nezávislé množiny. 
+\end{definition}
+
+\begin{definition}
+Nech $M = (X, \mathcal{N})$ je matroid a nech $A \subseteq X$. Množinu $B \subseteq A$ voláme bázou množiny $A$ v matroide $M$, ak 
+je to maximálna (na inklúziu) nezávislá množina v $A$. Formálne, $B$ je bázou $A$ v matroide $M=(X, \mathcal{N})$, ak:
+$$B \subseteq A \wedge B \in \mathcal{N} \wedge \left( \forall B' \supset B: B' \subseteq A \Longrightarrow B' \not\in\mathcal{N} \right)$$
+
+Špeciálne, bázy množiny $X$ voláme bázy matroidu. Množinu báz matroidu $M$ znáčime ako $\mathcal{B}$.
+\end{definition}
+
+\begin{theorem}
+Nech $(X, \mathcal{N})$ je matroid a $A \subseteq X$. Nech $N, N'$ sú bázy množiny $A$. Potom $\ssize{N} = \ssize{N'}$.
+\end{theorem}
+
+\begin{definition}
+Nech $(X, \mathcal{N})$ je matroid. Hodnosťou množiny $A \subseteq X$ voláme veľkosť nejakej bázy $B$ množiny $A$ a znáčime ako $r(A) := \ssize{B}$.
+\end{definition}
+
+\begin{theorem}
+Nech $(X, \mathcal{N})$ je matroid a $r:\powerset(X) \to \mathbb{N}_0$ je jeho hodnostná funkcia. Potom platí:
+\begin{enumerate}
+    \item $r(\varnothing) = 0$
+    \item $r(\set{x}) \leq 1$
+    \item $A \subseteq B \Longrightarrow r(A) \leq r(B)$
+    \item $r(A \cup B) \leq r(A) + r(B) - r(A \cap B)$ (semimodularita)
+\end{enumerate}
+
+Navyše, ak nejaká funkcia $r':\powerset(X)\to\mathbb{N}_0$ spĺňa vyššie uvedené podmienky, tak existuje jediný matroid, ktorého
+hodnostnou funkciou je práve $r'$.
+
+\end{theorem}
+
+\begin{theorem}
+Nech $(X, \mathcal{N})$ je matroid a $\mathcal{B}$ je množina jeho báz. Potom platí:
+\begin{enumerate}
+    \item[B1:] žiadné 2 prvky množiny $\mathcal{B}$ nie sú v inklúzii
+    \item[B2:] $B, B' \in \mathcal{B} \Longrightarrow \forall x \in B - B' ~\exists y \in B' - B: (B-\set{x}) \cup \set{y} \in \mathcal{B}$
+\end{enumerate}
+
+Navyše, ak množina $\mathcal{B}'$ spĺňa vyššie uvedené podmienky B1 a B2, tak existuje jediný matroid, ktorého množinou báz je práve $\mathcal{B}'$.
+\end{theorem}
+
+\TODO uzaver
+
+\TODO kruznice
+
+\TODO priklady matroidov: cez vektory, cez grafy, cez signovane grafy
+
 \section{Dualita matroidov}
+
+\TODO veta o dualite
+
+\TODO dualne grafy a triedy matroidov (reprezentovatelne, regularne, grafove, etc.)
+
+\TODO zuzenie matroidu, kontrakcia matroidu, minor matroidu
+
+\TODO charakteristiky tried matroidov a vztah s planaritou grafov
+
+
+
 \section{Matroidové algoritmy}
+
+\TODO definicia pazraveho algoritmu
+
+\TODO veta o optimalite pazraveho algoritmu
