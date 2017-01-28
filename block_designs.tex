@@ -308,14 +308,14 @@ Ak $v$ je počet objektov STS, tak $v \equiv 1 \mod 6$ alebo $v \equiv 3 \mod 6$
 Ak $v$ spĺňa podmienky z vety \ref{th:sts_nec}, tak existuje STS s práve $v$ objektmi.
 \end{theorem_hard}
 
-\begin{theorem}{(Projektívne STS)\footnote{\TODO treba dôkaz?}\footnote{\TODO trochu mi nesedí: má to byť VP alebo pole (resp. zároveň)}}\\
+\begin{theorem}{(Projektívne STS)\footnote{\TODO treba dôkaz?}}\\
 Nech $X := \left(\mathbb{Z}_2\right)^{n+1} - \set{\vec{0}}$ je množina vektorov vektorového priestoru dimenzie $n+1$ nad poľom $\mathbb{Z}_2$ bez nulového vektora a 
 $\mathcal{B} := \set{\set{\vec{x}, \vec{y}, \vec{z}} ~|~ \vec{x} + \vec{y} + \vec{z} = \vec{0}}$.
 Potom dvojica $(X, \mathcal{B})$ je STS. Alternatívne, množina priamok projektívnej roviny $PG(2, n)$ tvorí STS.
 \end{theorem}
 
 \begin{theorem}{(Afinné STS)\footnote{\TODO treba dôkaz?}}\\
-Nech $X := \left(\mathbb{Z}_3\right)$ je množina vektorov vektorového priestoru dimenzie $n$ nad poľom $\mathbb{Z}_3$. 
+Nech $X := \left(\mathbb{Z}_3\right)^{n}$ je množina vektorov vektorového priestoru dimenzie $n$ nad poľom $\mathbb{Z}_3$. 
 Nech $\mathcal{B} := \set{\set{\vec{x}, \vec{y}, \vec{z}} ~|~ \vec{x} + \vec{y} + \vec{z} = \vec{0}}$. Potom 
 dvojica $(X, \mathcal{B})$ je STS.
 \end{theorem}
@@ -372,7 +372,46 @@ Každý bezmostový kubický graf má 6 1-faktorov takých, že každá hrana gr
 \end{hypothesis}
 
 
+\begin{definition}
+Dvojica $(X, \mathcal{B})$, kde $\mathcal{B} \in \powerset(X)$, je $t-(v, k, \lambda)$-blokový plán (angl. \emph{$t$-design}), ak:
+\begin{itemize}
+    \item $\ssize{X} = v$
+    \item $\forall B \in \mathcal{B}: \ssize{B} = k$
+    \item každá $t$-tica objektov z $X$ sa vyskytuje v práve $\lambda$ blokoch z $\mathcal{B}$
+\end{itemize}
+
+Navyše, blokové plány typu $t-(v,k,1)$ budeme označovať ako $S(t,k,v)$.
+\end{definition}
+
+\begin{remark}
+Existencia $t-(v,k,\lambda)$-blokového plánu je ekvivalentná s existenciou rozkladu $t$-uniformných $\lambda$-násobných hypergrafov
+na klíky veľkosti $k$.
+\end{remark}
+
+\begin{remark}
+STS s $v$ prvkami môžeme značiť ako $S(2,3,v)$.
+\end{remark}
+
+\begin{definition}
+Blokové plány $S(3.4,v)$ voláme Steinerovské systémy štvoríc (angl. \emph{SQS})
+\end{definition}
+
+\begin{theorem_hard}
+
+$\exists S(3,4,v) \Longleftrightarrow v \equiv 3,4 \mod 6$
+
+\end{theorem_hard}
 
 
+\begin{definition}
+Blokové plány $S(4,5,v)$ voláme Steinerovské systémy pätíc
+\end{definition}
 
 
+\begin{theorem_hard}
+
+$\exists S(4,5,v) \Longrightarrow v \equiv 4,5 \mod 6 \wedge v \not\equiv 4 \mod 5$
+
+\end{theorem_hard}
+
+\TODO konečné jednoduché grupy.
