@@ -225,6 +225,36 @@ Oznáčme Fannov matroid ako $\mathcal{F}$.
 
 \section{Matroidové algoritmy}
 
-\TODO definicia pazraveho algoritmu
+\begin{definition}
 
-\TODO veta o optimalite pazraveho algoritmu
+Problém maximálnej množiny je trojica $(X, \mathcal{M}, c)$, kde 
+$X = {x_1, \ldots, x_n}$ je množina objektov, 
+$\mathcal{M} \subseteq \powerset(X)$ je množina prípustných riešení a $c: X \to \mathbb{R}^+ \cup \set{0}$
+je cenová funkcia, rozširiteľná na $\powerset(X)$, a to takým spôsobom: $\forall A \in \powerset(X): c(A) := \sum_{x_i \in A} c(x_i) $.
+Riešením problému maximálnej množiny je množina $M^* \in \mathcal{M}$ s maximálnou cenou. Formálne,
+$$M^* := \underset{M \in \mathcal{M}}{\arg\max}~c(M)$$
+
+\end{definition}
+
+\begin{definition}{(Pažravý algoritmus)}\\
+Nech $(X, \mathcal{M}, c)$ je problém maximálnej množiny. Potom nasledovný algoritmus je pažravým algoritmom pre najdenie riešenia
+daného problému:
+\begin{enumerate}
+    \item $M_0 := \varnothing$
+    \item $M_{i+1} := M_i \cup \set{x}$, ak $x$ spĺňa nasledovné podmienky:
+    \begin{enumerate}
+        \item $x \not\in M_i$
+        \item $M_i \cup \set{x} \subseteq M' \in \mathcal{M}$ (t.j. existuje také $M' \in \mathcal{M}$)
+        \item $x$ má spomedzi všetkých prvkov, ktoré splňajú predchádzajúce podmienky, maximálnu cenu $c(x)$
+    \end{enumerate}
+    \item Opakujeme krok 2. Ak $x$, vyhovujúce všetkým podmienkam z druhého kroku, neexistuje, tak algoritmus končí a odpoveďou je posledná množina $M_i$.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}{(Vzťah matroidov a pažravých algoritmov)}\\
+Nech $X$ je konečná množina, $\mathcal{M} \subseteq \powerset(X)$. Potom nasledujúce podmienky sú ekvivalentné:
+\begin{enumerate}
+    \item pre každé nezáporné ohodnotenie $c$ množiny $X$ pažravý algoritmus nájde optimálne riešenie
+    \item existuje matroid na množine $X$ taký, že $\mathcal{M}$ je systémom báz daného matroidu 
+\end{enumerate}
+\end{theorem}
