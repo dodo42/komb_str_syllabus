@@ -11,8 +11,22 @@ Dvojica $(X, \mathcal{N})$, kde $\mathcal{N} \in \powerset(X)$ a $\mathcal{N}$ j
     \item $N, N' \in \mathcal{N} \wedge \ssize{N} < \ssize{N'} \Longrightarrow \exists x \in N' - N: N \cup \set{x} \in \mathcal{N}$
 \end{enumerate}
 
-Množiny z $\mathcal{N}$ voláme nezávislé množiny. 
+Množiny z $\mathcal{N}$ voláme nezávislé množiny. Množiny mimo $\mathcal{N}$ voláme závislé.
 \end{definition}
+
+\begin{theorem}{(Matroid z vektorového priestoru)}\\
+Nech $V_n(F) \cong F^n$ je vektorový priestor dimenzie $n < \infty$ nad (nie nutné konečným) poľom $F$. 
+Nech $(\vec{x}_1, \ldots, \vec{x}_r)$ je postupnosť (nie nutné rôznych) vektorov z $V_n(F)$.
+Nech $X := \set{1, \ldots, r}$, $\mathcal{N} := \set{Q ~|~ Q \subseteq X \wedge \set{\vec{x}_i ~|~ i \in Q} \text{ je nezávislá v } V_n(F) }$.
+Potom dvojica $(X, \mathcal{N})$ je matroid.
+\end{theorem}
+
+\begin{theorem}{(Matroid z grafu)}\\
+Nech $G = (V, E)$ je jednoduchý graf. Nech $X := E$. Nech množina hrán $A \subseteq E$ patrí do množiny $\mathcal{N}$ práve vtedy, keď
+indukovaný graf neobsahuje kružnice. Potom dvojica $M(G) = (X, \mathcal{N})$ je matroid.
+\end{theorem}
+
+\TODO konstrukcia matroidu cez signovane grafy?
 
 \begin{definition}
 Nech $M = (X, \mathcal{N})$ je matroid a nech $A \subseteq X$. Množinu $B \subseteq A$ voláme bázou množiny $A$ v matroide $M$, ak 
@@ -54,22 +68,159 @@ Nech $(X, \mathcal{N})$ je matroid a $\mathcal{B}$ je množina jeho báz. Potom 
 Navyše, ak množina $\mathcal{B}'$ spĺňa vyššie uvedené podmienky B1 a B2, tak existuje jediný matroid, ktorého množinou báz je práve $\mathcal{B}'$.
 \end{theorem}
 
-\TODO uzaver
+\begin{definition}
+Nech $M = (X, \mathcal{N})$ je matroid a $A \subseteq X$. Prvok $x \in X$ voláme závislý od množiny $A$ v matroide $M$, ak $r(A) = r(A \cup \set{x})$.
+\end{definition}
 
-\TODO kruznice
+\begin{definition}
+Nech $M = (X, \mathcal{N})$ je matroid a $A \subseteq X$. Úzaverom množiny $A$ v matroide $M$ voláme množinu $\bar{A}$ všetkých závislých prvkov od $A$. Formálne,
+$$\bar{A} := \set{x \in X ~|~ r(A) = r(A \cup \set{x})}$$
+\end{definition}
 
-\TODO priklady matroidov: cez vektory, cez grafy, cez signovane grafy
+\begin{theorem}
+Nech $M = (X, \mathcal{N})$ je matroid a $A \subseteq X$. Potom platí:
+\begin{enumerate}
+    \item $A \subseteq \bar{A}$
+    \item $\bar{A} = \bar{\bar{A}}$
+    \item $\bar{A} = \bigcup_{B \in \powerset(X)} \set{B ~|~ B \supseteq A \wedge r(B) = r(A)}$
+    \item $r(A) = r(\bar{A})$
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+Nech $M = (X, \mathcal{N})$ je matroid a $\Phi:\powerset(X) \to \powerset(X)$ je jeho úzaverová funkcia (t.j. $\Phi(A) = \bar{A}$).
+Potom platí:
+\begin{enumerate}
+    \item[U1:] $\forall A \subseteq X: A \in \bar{A}$
+    \item[U2:] $A \subseteq \bar{B} \Longrightarrow \bar{A} \subseteq \bar{B}$
+    \item[U3:] $x \not\in A \wedge x \in \overline{A \cup \set{y}} \Longrightarrow y \in \overline{A \cup \set{x}}$
+\end{enumerate}
+
+Navyše, ak existuje funkcia $\Phi': \powerset(A) \to \powerset(A)$, ktorá spĺňa podmienky U1 --- U3, tak existuje jediný matroid,
+ktorého úzaverovou funkciou je práve $\Phi'$.
+\end{theorem}
+
+\begin{definition}
+Nech $(X, \mathcal{N})$ je matroid. Množina $K \subseteq X$ sa volá kružnica, ak je to najmenšia (na inklúziu) závislá množina. Formálne,
+množina $K \subseteq X$ je kružnica, ak:
+$$ K \not\in\mathcal{N} \wedge \left(\forall K' \subseteq K: K' \in\mathcal{N} \right)$$ 
+\noindent
+Množinu všetkých kružníc matroidu označujeme ako $\mathcal{K}$.
+\end{definition}
+
+\begin{theorem}
+Nech $(X, \mathcal{N})$ je matroid a $\mathcal{K}$ je množina všetkých jeho kružníc. Potom platí:
+\begin{enumerate}
+    \item[K1:] žiadne dva prvky množiny $\mathcal{K}$ nie sú v inklúzii
+    \item[K2:] $K, K' \in \mathcal{K} \wedge K \neq K' \wedge \exists x \in K \cap K' \Longrightarrow \exists L \in \mathcal{K}: L \subseteq (K \cup K') - \set{x}$
+\end{enumerate}
+
+Navyše, ak existuje množina $\mathcal{K}'$, ktorá spĺňa podmienky K1 a K2, tak existuje jediný matroid, ktorého množinou kružníc je práve $\mathcal{K}'$.
+\end{theorem}
 
 \section{Dualita matroidov a triedy matroidov}
 
-\TODO veta o dualite
+\begin{theorem}{(veta o dualite)}\\
+Nech $M = (X, \mathcal{N})$ je matroid. Nech $\mathcal{B}$ je množina báz matroidu $M$ a $r:\powerset(X) \to \mathbb{N}_0$ je hodnostná funkcia matroidu $M$.
+Ďalej nech:
+\begin{itemize}
+    \item $\mathcal{B}^* := \set{X - B ~|~ B \in \mathcal{B}}$
+    \item $\mathcal{N}^* := \set{X - A ~|~ A \subseteq X \wedge r(A) = r(X)}$
+    \item $r^*: \powerset(A) \to \mathbb{N}_0$ taká, že $r^*(A) := \ssize{A} - r(X) + r(X - A) = \ssize{A} - (r(X) - r(X-A))$
+\end{itemize}
 
-\TODO dualne grafy a triedy matroidov (reprezentovatelne, regularne, grafove, etc.)
+\noindent
+Potom platí:
+\begin{enumerate}
+    \item množina $\mathcal{B}^*$ je systémom báz nejakého matroidu
+    \item množina $\mathcal{N}^*$ je systémom nezávislých množín nejakého matroidu
+    \item funkcia $r^*$ je hodnostnou funkciou nejakého matroidu
+    \item navyše, všetky 3 vyššie uvedené matroidy sú rovnaké
+\end{enumerate}
 
-\TODO zuzenie matroidu, kontrakcia matroidu, minor matroidu
+\noindent
+Takýmto spôsobom zostrojený matroid sa volá duálny a značí sa ako $M^* = (X, \mathcal{N}^*)$.
 
-\TODO charakteristiky tried matroidov a vztah s planaritou grafov
+\end{theorem}
 
+\begin{definition}
+Nech $X:=\set{1, \ldots, n}$, $\mathcal{N}:=\set{A ~|~ A \subseteq X \wedge \ssize{A} \leq k}$. Potom 
+dvojica $U_k^n = (X, \mathcal{N})$ je matroid.
+\end{definition}
+
+\begin{theorem}
+$(U_k^n)^* = U_{n-k}^n$
+\end{theorem}
+
+\begin{theorem}
+Nech $M(G)$ je grafový matroidu grafu $G$. Potom nasledujúce podmienky sú ekvivalentné:
+\begin{enumerate}
+    \item $M^*$ je grafový matroid
+    \item $G$ je planárny graf
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+Nech $M=(X, \mathcal{N})$ je matroid a $F$ je pole. Matroid $M$ je $F$-reprezentovateľný, ak
+existuje vektorový priestor $V$ konečnej dimenzie nad $F$ a zobrazenie $f:X \to V$ také, že
+$$\forall A \in X: \left(A \in \mathcal{N} \Longleftrightarrow f(A) \text{ je lineárne nezávislá vo } V \right)$$ 
+\end{definition}
+
+\begin{definition}
+Matroid je reprezentovateľný, ak je $F$-reprezentovateľný nad nejakým poľom $F$.
+\end{definition}
+
+\begin{definition}
+Matroid je binárny, ak je $GF(2)$-reprezentovateľný.
+\end{definition}
+
+\begin{definition}
+Matroid je regulárny, ak je $F$-reprezentovateľný nad každým poľom~$F$.
+\end{definition}
+
+\begin{theorem_hard}
+Každý grafový matroid je regulárny.
+\end{theorem_hard}
+
+\TODO Cayleho grafy?
+
+\TODO rezy a kruznice su kolme v kazdej reprezentacii?
+
+\begin{definition}{(Zúženie matroidu)}\\
+Nech $M = (X, \mathcal{N})$ je matroid a $Y \subseteq X$. 
+Nech $\mathcal{N}_Y := \set{A ~|~ A \subseteq Y \wedge \exists B \in \mathcal{N}: A = B \cap Y}$.
+Potom $\faktor{M}{Y} := (Y, \mathcal{N}_Y)$ je matroid a nazýva sa zúžením matroidu $M$ na množinu $Y$.
+\end{definition}
+
+\begin{definition}{(Kontrakcia matroidu)}\\
+Nech $M = (X, \mathcal{N})$ je matroid a $Y \subseteq X$. 
+Nech $A \subseteq Y$ patrí do systému $\mathcal{N}_Y$ práve vtedy, keď existuje 
+báza $B$ množiny $X-Y$ v matroide $M$ taká, že $A \cup B \in \mathcal{N}$. Potom dvojica
+$M.Y := (Y, \mathcal{N}_Y)$ je matroid a nazýva sa kontrakciou matroidu $M$ na množinu $Y$.
+\end{definition}
+
+\begin{theorem}
+$(M.Y)^* = \faktor{M^*}{Y}$
+\end{theorem}
+
+\begin{definition}
+Matroid $M'$ je minorom matroidu $M$, ak sa matroid $M'$ dá dostať z matroidu $M$ pomocou postupnosti zúžení a kontrakcií.
+\end{definition}
+
+\TODO Fannov matroid
+
+\begin{theorem_hard}{(Charakterizácia tried matroidov)}\\
+
+Oznáčme Fannov matroid ako $\mathcal{F}$.
+
+\begin{enumerate}
+    \item matroid M je binárny $\Longleftrightarrow$ $U_2^4$ nie je minorom matroidu~M.
+    \item matroid M je regulárny $\Longleftrightarrow$ $U_2^4$, $\mathcal{F}$, $\mathcal{F}^*$ nie sú minormi matroidu~M.
+    \item matroid M je grafový $\Longleftrightarrow$ $U_2^4$, $\mathcal{F}$, $\mathcal{F}^*$, $M^*(K_{3,3})$, $M^*(K_{5})$ nie sú minormi matroidu~M.
+    \item matroid M je kografový $\Longleftrightarrow$ $U_2^4$, $\mathcal{F}$, $\mathcal{F}^*$, $M(K_{3,3})$, $M(K_{5})$ nie sú minormi matroidu~M.
+    \item matroid M je planárny $\Longleftrightarrow$ matroid M je grafový a kografový.
+\end{enumerate}
+\end{theorem_hard}
 
 
 \section{Matroidové algoritmy}
