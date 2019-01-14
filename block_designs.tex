@@ -357,7 +357,49 @@ Potom dvojica $(Y, \mathcal{C})$, kde $Y := X \cup X' \cup \set{\infty}$ a $\mat
 
 \TODO Paschovo prepnutie
 
-\TODO Wilson-Schreiberova konštrúkcia
+\begin{theorem}{Wilson-Schreiberova konštrúkcia}\\
+	Nech $n \equiv \pm 1 \pmod6$ je také celé číslo, že číslo $-2$ má v grupe $(\mathbb{Z}^*_n, \cdot)$ párny rád. Potom existuje STS rádu $n + 2$.
+\end{theorem}
+
+\begin{proof}
+	Uvažujme všetky neusporiadané trojice $\langle a, b, c \rangle$ takých prvkov $\mathbb{Z}_n$, že $a + b + c = 0$. Tieto trojice sú troch typov:
+	\begin{enumerate}
+		\item $\langle a, b, c \rangle$, $a$, $b$, $c$ sú navzájom rôzne,
+		\item $\langle a, b, c \rangle = \langle a, a, -2a \rangle$,
+		\item $\langle a, b, c \rangle = \langle 0, 0, 0 \rangle$.
+	\end{enumerate}
+	Nech multiplikatívny rád čísla $-2$ modulo $n$ je $2r$. Zoberme dva nové prvky $\beta,\ \gamma \notin Z_n$. Pre fixné $a \in \mathbb{Z}_n - \{0\}$ si zoberme neusporiadané trojice druhého typu
+	
+	$$\langle              a,              a,  -2          a \rangle,$$
+	$$\langle  -2          a,  -2          a, (-2)^2       a \rangle,$$
+	$$\langle (-2)^2       a, (-2)^2       a, (-2)^3       a \rangle,$$
+	$$\langle (-2)^3       a, (-2)^3       a, (-2)^4       a \rangle,$$
+	$$\vdots$$
+	$$\langle (-2)^{2r - 2}a, (-2)^{2r - 2}a, (-2)^{2r - 1}a \rangle,$$
+	$$\langle (-2)^{2r - 1}a, (-2)^{2r - 1}a,              a \rangle = \langle (-2)^{2r - 1}a, (-2)^{2r - 1}a, (-2)^{2r}a \rangle.$$
+	Pre $i \in \{0, 1, \dots, r-1\}$, trojicu $\langle (-2)^{2i}a, (-2)^{2i}a, (-2)^{2i + 1}a \rangle$ nahradíme trojicou $\langle (-2)^{2i}a, \alpha, (-2)^{2i + 1}a \rangle$ a trojicu $\langle (-2)^{2i + 1}a, (-2)^{2i + 1}a, (-2)^{2i + 2}a \rangle$ nahradíme trojicou $\langle (-2)^{2i}a, \alpha, (-2)^{2i + 1}a \rangle$. Dostaneme teda trojice typu
+	\begin{align*}
+	\langle              a,              a,  -2          a \rangle \quad \rightarrow& \quad \langle              a,         \alpha,  -2          a \rangle,\\
+	\langle  -2          a,  -2          a, (-2)^2       a \rangle \quad \rightarrow& \quad \langle  -2          a,          \beta, (-2)^2       a \rangle,\\
+	\langle (-2)^2       a, (-2)^2       a, (-2)^3       a \rangle \quad \rightarrow& \quad \langle (-2)^2       a,         \alpha, (-2)^3       a \rangle,\\
+	\langle (-2)^2       a, (-2)^2       a, (-2)^3       a \rangle \quad \rightarrow& \quad \langle (-2)^2       a,          \beta, (-2)^3       a \rangle,\\
+	\vdots&\\
+	\langle (-2)^{2r - 2}a, (-2)^{2r - 2}a, (-2)^{2r - 1}a \rangle \quad \rightarrow& \quad \langle (-2)^{2r - 2}a,         \alpha, (-2)^{2r - 1}a \rangle,\\
+	\langle (-2)^{2r - 1}a, (-2)^{2r - 1}a,              a \rangle \quad \rightarrow& \quad \langle (-2)^{2r - 1}a,          \beta,              a \rangle.
+	\end{align*}
+	Pokiaľ nám ostala ešte nejaká trojica $\langle b, b, -2b \rangle$ typu 2, tento postup s ňou zopakujeme, pokým všetky trojice typu dva takto nenahradíme.
+	Nakoniec trojicu $\langle 0, 0, 0 \rangle$ nahradíme trojicou $\langle 0, \alpha, \beta \rangle$. Všetky trojice typu 1 ponecháme. Všetky nové trojice obsahujú tri rôzne prvky, už len ukážeme, že tvoria STS $(X, \mathcal{B})$ s nosnou množinou $X = \mathbb{Z}_n \cup \{\alpha, \beta \}$.
+	
+	Zoberme si ľubovoľnú dvojicu prvkov $a,\ b \in X$. Ak $\{ a, b \} = \{ \alpha, \beta \}$, tak sa $\{a, b\}$ nachádza v práve jednej trojici $\{0, \alpha, \beta \}$. Pokiaľ $a = \alpha$ a $b \in \mathbb{Z}_n$, tak $\alpha$ sa vyskytuje len v trojiciach typu 2. V nich sa $b$ vyskytuje iba v trojiciach $\langle b, b, -2b \rangle$ a $\langle (-2)^{-1}b, (-2)^{-1}b, b \rangle$. Práve jednu z nich sme prerobili na trojicu obsahujúcu $\alpha$, $b$. Prípad $a = \beta$, $b \in \mathbb{Z}_n$ je podobný.
+	
+	Pokiaľ $a \ne b \in \mathbb{Z}_n$, tak nech $c = - a - b$. Pokiaľ $a \ne c \ne b$, tak $\{a, b, c\}$ je jediná trojica obsahujúca $\{a, b\}$. Inak BUNV $c = a$. Potom $b = -2a$ a prvky $a$ a $-2a$ sa nachádzajú spolu v práce jednej trojici spolu s buď $\alpha$, alebo $\beta$.
+\end{proof}
+
+\begin{theorem_hard}{Wilson-Schreiberova konštrúkcia (všeobecnejšia)}\\
+	Nech $n \equiv \pm 1 \pmod{6}$ a nech $A$ je Abelovská grupa rádu $n$, v ktorej $-2$ má párny multiplikatívny rád. Potom existuje STS rádu $n + 2$. 
+\end{theorem_hard}
+
+Táto veta využíva, že každá Abelovská grupa sa dá zapísať (vzhľadom na izomorfizus) ako súčin cyklických grúp. Pomocou nich možno definovať $-2$ ako $(-2,-2, \dots, -2)$, násobenie a multiplikatívny rád.
 
 \TODO Boséova konštrukcia
 
